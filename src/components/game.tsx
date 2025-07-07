@@ -253,7 +253,7 @@ export function Game() {
       };
 
       const paddleWidth = adjustedLargePixelSize;
-      const paddleLength = 7 * adjustedLargePixelSize;
+      const paddleLength = 10 * adjustedLargePixelSize;
 
       paddlesRef.current = [
         {
