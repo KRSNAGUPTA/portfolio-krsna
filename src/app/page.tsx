@@ -1,9 +1,8 @@
 import Game from "@/components/game";
-import Image from "next/image";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { BiLinkExternal } from "react-icons/bi";
 import { VscGithub } from "react-icons/vsc";
-import { cn } from "@/lib/utils";
+
 const projects = [
   {
     id: 1,
@@ -33,8 +32,9 @@ export default function Home() {
       <section id="game-section">
         <Game />
       </section>
+
       <section id="project-section">
-        <div className="relative flex min-h-screen w-full items-center justify-center bg-black px-4">
+        <div className="relative flex min-h-screen min-w-screen items-center justify-center bg-black">
           <div
             className="
               absolute inset-0
@@ -42,15 +42,21 @@ export default function Home() {
               [background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]
             "
           />
+
+          {/* Radial gradient overlay */}
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
 
-          <div className="relative z-20 flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-8 py-8 w-full max-w-7xl">
+          <div className="flex flex-col sm:flex-row flex-wrap z-20 bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text py-8 text-4xl font-bold text-transparent sm:text-7xl">
             {projects.map((project) => (
-              <CardContainer className="w-full sm:w-[30rem]" key={project.id}>
-                <CardBody className="relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] h-auto rounded-xl p-6 border">
-                  <CardItem translateZ="50" className="text-xl font-bold text-neutral-100">
+              <CardContainer key={project.id}>
+                <CardBody className="relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+                  <CardItem
+                    translateZ="50"
+                    className="text-xl font-bold text-neutral-100"
+                  >
                     {project.title}
                   </CardItem>
+
                   <CardItem
                     as="p"
                     translateZ="60"
@@ -58,17 +64,15 @@ export default function Home() {
                   >
                     {project.description}
                   </CardItem>
-                  <CardItem
-                    translateZ="100"
-                    className="w-full mt-4 relative max-w-full aspect-video rounded-xl overflow-hidden border"
-                  >
-                    <iframe
-                      src={project.liveLink}
-                      className="w-full h-full border-0"
-                      scrolling="no"
-                      sandbox="allow-scripts allow-same-origin"
-                      title={`${project.title} Live Preview`}
-                    ></iframe>
+
+                  <CardItem translateZ="100" className="w-full mt-4">
+                    <img
+                      src={project.image}
+                      height="1000"
+                      width="1000"
+                      className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                      alt={`${project.title} preview`}
+                    />
                   </CardItem>
 
                   <div className="flex justify-between items-center mt-10">
@@ -76,7 +80,7 @@ export default function Home() {
                       href={project.githubLink}
                       translateZ={20}
                       as="a"
-                      target="__blank"
+                      target="_blank"
                       className="p-1 rounded-full backdrop-blur-md bg-white/10 border border-white/20 text-white hover:bg-white/20 transition"
                     >
                       <VscGithub className="h-7 w-7 text-white" />
@@ -84,12 +88,12 @@ export default function Home() {
 
                     <CardItem
                       href={project.liveLink}
-                      target="__blank"
+                      target="_blank"
                       translateZ={20}
                       as="button"
                       className="hover:cursor-pointer flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-md bg-white/10 border border-white/20 text-white text-xs font-semibold hover:bg-white/20 transition"
                     >
-                      Try now
+                      {project.buttonText}
                       <BiLinkExternal className="h-4 w-4" />
                     </CardItem>
                   </div>
@@ -102,4 +106,3 @@ export default function Home() {
     </div>
   );
 }
-
