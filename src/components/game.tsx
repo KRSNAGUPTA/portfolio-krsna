@@ -144,7 +144,7 @@ export function Game() {
       const scale = scaleRef.current;
       const LARGE_PIXEL_SIZE = 8 * scale;
       const SMALL_PIXEL_SIZE = 4 * scale;
-      const BALL_SPEED = 6 * scale;
+      const BALL_SPEED = 10 * scale;
 
       pixelsRef.current = [];
       const words = ["KRSNA", "IS ALL YOU NEED"];
@@ -253,7 +253,7 @@ export function Game() {
       };
 
       const paddleWidth = adjustedLargePixelSize;
-      const paddleLength = 10 * adjustedLargePixelSize;
+      const paddleLength = 7 * adjustedLargePixelSize;
 
       paddlesRef.current = [
         {
