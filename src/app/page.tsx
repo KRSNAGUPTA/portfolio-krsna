@@ -1,5 +1,6 @@
 import Game from "@/components/game";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+import Image from "next/image";
 import { BiLinkExternal } from "react-icons/bi";
 import { VscGithub } from "react-icons/vsc";
 
@@ -10,7 +11,7 @@ const projects = [
     description:
       "A simple yet intuitive task management app that helps you organize your tasks efficiently. Create, edit, and delete tasks with ease.",
     image: "/task.webp",
-    buttonText: "Try now →",
+    buttonText: "Try now",
     githubLink: "https://github.com/KRSNAGUPTA/task-manager",
     liveLink: "https://task.krsnadev.tech/",
   },
@@ -20,7 +21,7 @@ const projects = [
     description:
       "Next time book your hostel with us. Fast and easy booking for hostels and hotels. We are the best in the business.",
     image: "/travel-tribe.webp",
-    buttonText: "Try now →",
+    buttonText: "Try now ",
     githubLink: "https://github.com/KRSNAGUPTA/traveltribe",
     liveLink: "https://travel-tribe.krsnadev.tech/",
   },
@@ -66,10 +67,10 @@ export default function Home() {
                   </CardItem>
 
                   <CardItem translateZ="100" className="w-full mt-4">
-                    <img
+                    <Image
                       src={project.image}
-                      height="1000"
-                      width="1000"
+                      height={1000}
+                      width={1000}
                       className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
                       alt={`${project.title} preview`}
                     />
